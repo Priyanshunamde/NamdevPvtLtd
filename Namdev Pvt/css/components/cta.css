@@ -1,0 +1,65 @@
+/* ==========================================================================
+   CTA — components/cta.css
+   Call-to-action banner card with decorative gradients
+   ========================================================================== */
+
+.cta-section {
+  padding: var(--section-padding);
+  background: var(--bg-primary);
+}
+
+.cta-card {
+  background: var(--gradient-cta);
+  border: 1px solid var(--bg-glass-border);
+  border-radius: var(--radius-lg);
+  padding: 80px 40px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* --- Decorative Glows --- */
+.cta-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.06), transparent 70%);
+  pointer-events: none;
+}
+
+.cta-card::after {
+  content: '';
+  position: absolute;
+  bottom: -30%;
+  left: -10%;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(147, 197, 253, 0.05), transparent 70%);
+  pointer-events: none;
+}
+
+/* --- Card Text & Button --- */
+.cta-card h2 {
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+  position: relative;
+  z-index: 1;
+}
+
+.cta-card p {
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  margin-bottom: 36px;
+  position: relative;
+  z-index: 1;
+}
+
+.cta-card .btn-primary {
+  position: relative;
+  z-index: 1;
+}

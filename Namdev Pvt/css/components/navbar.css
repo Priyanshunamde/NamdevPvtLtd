@@ -1,0 +1,185 @@
+/* ==========================================================================
+   NAVBAR — components/navbar.css
+   Fixed navigation bar, logo, links, CTA button, and mobile toggle
+   ========================================================================== */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 0 24px;
+  background: var(--navbar-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--bg-glass-border);
+  transition: box-shadow var(--transition-base);
+}
+
+.navbar.scrolled {
+  box-shadow: 0 2px 30px rgba(0, 0, 0, 0.5);
+}
+
+.navbar-inner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+}
+
+/* --- Logo --- */
+.logo {
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  flex-shrink: 0;
+}
+
+.logo-text span {
+  color: var(--accent-primary);
+}
+
+/* --- Nav Links --- */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+}
+
+.nav-links a {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  position: relative;
+  padding: 4px 0;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--gradient-accent);
+  border-radius: 1px;
+  transition: width var(--transition-base);
+}
+
+.nav-links a:hover {
+  color: var(--text-primary);
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* --- Nav CTA Button --- */
+.nav-links .nav-cta {
+  padding: 10px 24px;
+  background: var(--gradient-accent);
+  color: var(--bg-primary) !important;
+  font-weight: 600 !important;
+  border-radius: var(--radius-full);
+  font-size: 0.85rem !important;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast) !important;
+}
+
+.nav-cta::after {
+  display: none !important;
+}
+
+.nav-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-glow-primary);
+}
+
+/* --- Theme Toggle Button --- */
+.theme-toggle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--bg-glass);
+  border: 1px solid var(--bg-glass-border);
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  flex-shrink: 0;
+  margin-left: 8px;
+}
+
+.theme-toggle:hover {
+  color: var(--accent-primary);
+  border-color: rgba(59, 130, 246, 0.25);
+  background: var(--gradient-card-hover);
+  transform: rotate(15deg) scale(1.05);
+}
+
+/* --- Mobile Toggle --- */
+.mobile-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 4px;
+  background: none;
+  border: none;
+}
+
+.mobile-toggle span {
+  width: 24px;
+  height: 2px;
+  background: var(--text-primary);
+  border-radius: 2px;
+  transition: var(--transition-base);
+}
+
+/* --- Sliding Banner --- */
+.sliding-banner {
+  position: fixed;
+  top: 72px; /* Set directly below the navbar */
+  left: 0;
+  right: 0;
+  background: var(--gradient-accent);
+  color: var(--bg-primary); /* Ensures white text on dark/light themes */
+  padding: 8px 0;
+  overflow: hidden;
+  white-space: nowrap;
+  z-index: 998;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.sliding-banner-track {
+  display: inline-flex;
+  animation: slide-left 25s linear infinite;
+}
+
+.sliding-banner-track span {
+  padding: 0 50px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+@keyframes slide-left {
+  from { transform: translateX(0%); }
+  to { transform: translateX(-50%); }
+}

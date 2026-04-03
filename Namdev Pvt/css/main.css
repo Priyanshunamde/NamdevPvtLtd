@@ -1,0 +1,39 @@
+/* ==========================================================================
+   MAIN — main.css
+   Master stylesheet that @imports all modules in the correct cascade order
+   ==========================================================================
+
+   Import Order:
+   1. Design tokens (variables)       — must come first, everything depends on them
+   2. Reset & base                    — normalizes browser defaults
+   3. Layout & shared primitives      — containers, section headers, buttons
+   4. Animations                      — keyframes & utility classes
+   5. Components (per-section)        — in page-flow order (top to bottom)
+   6. Responsive overrides            — must come last to properly override
+   ========================================================================== */
+
+/* 1. Design Tokens */
+@import 'variables.css';
+
+/* 2. Reset & Base */
+@import 'reset.css';
+
+/* 3. Layout & Shared Primitives */
+@import 'layout.css';
+
+/* 4. Animations */
+@import 'animations.css';
+
+/* 5. Components (page-flow order) */
+@import 'components/navbar.css';
+@import 'components/hero.css';
+@import 'components/services.css';
+@import 'components/experts.css';
+@import 'components/features.css';
+@import 'components/about.css';
+@import 'components/cta.css';
+@import 'components/contact.css';
+@import 'components/footer.css';
+
+/* 6. Responsive Overrides (must be last) */
+@import 'responsive.css';

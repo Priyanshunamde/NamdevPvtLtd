@@ -1,0 +1,106 @@
+/* ==========================================================================
+   DESIGN TOKENS — variables.css
+   All CSS custom properties (colors, gradients, shadows, spacing, typography)
+   ========================================================================== */
+
+:root {
+  /* --- Colors (Dark Mode — Default) --- */
+  --bg-primary: #0a0e17;
+  --bg-secondary: #0f172a;
+  --bg-card: rgba(15, 23, 42, 0.7);
+  --bg-glass: rgba(255, 255, 255, 0.03);
+  --bg-glass-border: rgba(255, 255, 255, 0.1);
+  --navbar-bg: rgba(10, 14, 23, 0.85);
+
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+
+  --accent-primary: #3b82f6;
+  --accent-primary-light: #60a5fa;
+  --accent-secondary: #93c5fd;
+  --accent-secondary-dark: #60a5fa;
+
+  /* --- Gradients --- */
+  --gradient-hero: linear-gradient(135deg, #0a0e17 0%, #0f172a 40%, #172554 70%, #0a0e17 100%);
+  --gradient-accent: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  --gradient-card-hover: linear-gradient(135deg, rgba(59, 130, 246, 0.08), rgba(147, 197, 253, 0.08));
+  --gradient-cta: linear-gradient(135deg, #111827 0%, #0f172a 50%, #1e293b 100%);
+
+  /* --- Shadows --- */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.5);
+  --shadow-glow-primary: 0 0 30px rgba(59, 130, 246, 0.15);
+  --shadow-glow-secondary: 0 0 30px rgba(147, 197, 253, 0.15);
+
+  /* --- Border Radius --- */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-full: 50px;
+
+  /* --- Typography --- */
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  /* --- Transitions --- */
+  --transition-fast: 0.2s ease;
+  --transition-base: 0.3s ease;
+  --transition-slow: 0.5s ease;
+
+  /* --- Layout --- */
+  --container-max: 1200px;
+  --section-padding: 100px 0;
+}
+
+/* ==========================================================================
+   LIGHT MODE OVERRIDES
+   Activated by adding data-theme="light" to the <html> element
+   ========================================================================== */
+[data-theme="light"] {
+  /* --- Colors --- */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f0f4f8;
+  --bg-card: rgba(255, 255, 255, 0.95);
+  --bg-glass: rgba(0, 0, 0, 0.02);
+  --bg-glass-border: #e2e8f0;
+  --navbar-bg: rgba(255, 255, 255, 0.95);
+
+  --text-primary: #0f172a;
+  --text-secondary: #64748b;
+  --text-muted: #94a3b8;
+
+  --accent-primary: #1e3a8a;
+  --accent-primary-light: #2563eb;
+  --accent-secondary: #60a5fa;
+  --accent-secondary-dark: #3b82f6;
+
+  /* --- Gradients --- */
+  --gradient-hero: linear-gradient(135deg, #ffffff 0%, #f0f4f8 40%, #e2e8f0 70%, #ffffff 100%);
+  --gradient-accent: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  --gradient-card-hover: linear-gradient(135deg, rgba(30, 58, 138, 0.08), rgba(96, 165, 250, 0.08));
+  --gradient-cta: linear-gradient(135deg, #f0f4f8 0%, #e2e8f0 50%, #f8fafc 100%);
+
+  /* --- Shadows --- */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.07);
+  --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.09);
+  --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.12);
+  --shadow-glow-primary: 0 0 30px rgba(30, 58, 138, 0.18);
+  --shadow-glow-secondary: 0 0 30px rgba(96, 165, 250, 0.18);
+}
+
+/* Smooth theme transition on all color-affected properties */
+body,
+.navbar,
+.service-card,
+.feature-item,
+.about-stat-card,
+.cta-card,
+.contact-form,
+.contact-item-icon,
+.expert-card-inner,
+.expert-btn,
+.footer,
+.social-link {
+  transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+}

@@ -1,0 +1,275 @@
+/* ==========================================================================
+   EXPERTS — components/experts.css
+   Expert's Insights section — full-bleed image cards with gradient merge
+   ========================================================================== */
+
+.experts {
+  padding: var(--section-padding);
+  background: var(--bg-primary);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle top separator */
+.experts::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--bg-glass-border), transparent);
+}
+
+/* Ambient glow decoration */
+.experts::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.03) 0%, rgba(147, 197, 253, 0.02) 40%, transparent 70%);
+  pointer-events: none;
+}
+
+/* --- Grid --- */
+.experts-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+  position: relative;
+  z-index: 1;
+}
+
+/* --- Card (outer border wrapper) --- */
+.expert-card {
+  position: relative;
+  border-radius: var(--radius-lg);
+  padding: 2px;
+  background: var(--bg-glass-border);
+  transition: all var(--transition-base);
+}
+
+.expert-card:hover {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.35), rgba(147, 197, 253, 0.35));
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-glow-primary), var(--shadow-glow-secondary);
+}
+
+/* --- Card Inner — image fills entire card --- */
+.expert-card-inner {
+  border-radius: calc(var(--radius-lg) - 1px);
+  overflow: hidden;
+  height: 100%;
+  position: relative;
+  min-height: 680px;
+}
+
+/* ==================================
+   IMAGE — absolute, fills entire card
+   ================================== */
+.expert-img-cover {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.expert-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  transition: transform 0.6s ease;
+}
+
+.expert-card:hover .expert-img {
+  transform: scale(1.05);
+}
+
+/* ==================================
+   GRADIENT OVERLAY — clear on top,
+   solid teal-dark at the bottom
+   ================================== */
+.expert-img-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(180deg,
+    transparent 0%,
+    transparent 30%,
+    rgba(10, 10, 15, 0.25) 42%,
+    rgba(10, 10, 15, 0.55) 52%,
+    rgba(15, 15, 25, 0.80) 62%,
+    rgba(17, 17, 25, 0.92) 72%,
+    rgb(17, 17, 25) 82%,
+    rgb(10, 10, 15) 100%);
+}
+
+[data-theme="light"] .expert-img-overlay {
+  background: linear-gradient(180deg,
+    transparent 0%,
+    transparent 32%,
+    rgba(248, 248, 253, 0.4) 42%,
+    rgba(248, 248, 253, 0.8) 50%,
+    rgb(248, 248, 253) 58%,
+    rgb(248, 248, 253) 100%);
+}
+
+/* ==================================
+   CARD BODY — positioned at bottom
+   over the gradient
+   ================================== */
+.expert-body {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  padding: 0 32px 32px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Name + Role */
+.expert-info {
+  margin-bottom: 16px;
+}
+
+.expert-name {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+  margin-bottom: 4px;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="light"] .expert-name {
+  text-shadow: none;
+}
+
+.expert-role {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent-primary-light);
+}
+
+[data-theme="light"] .expert-role {
+  color: var(--accent-primary);
+}
+
+/* --- Quote Icon --- */
+.expert-quote-icon {
+  margin-bottom: 10px;
+  opacity: 0.6;
+  transition: opacity var(--transition-base);
+}
+
+.expert-quote-icon svg path {
+  fill: var(--text-muted);
+}
+
+[data-theme="light"] .expert-quote-icon svg path {
+  fill: var(--accent-primary);
+}
+
+.expert-card:hover .expert-quote-icon {
+  opacity: 1;
+}
+
+/* --- Message --- */
+.expert-message {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.75;
+  margin-bottom: 24px;
+  font-style: italic;
+}
+
+[data-theme="light"] .expert-message {
+  color: #334155;
+  font-weight: 500;
+}
+
+/* --- Action Buttons --- */
+.expert-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.expert-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-radius: var(--radius-full);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+  cursor: pointer;
+  font-family: var(--font-family);
+  flex: 1;
+  justify-content: center;
+}
+
+/* Call Now */
+.expert-btn-call {
+  background: rgba(147, 197, 253, 0.12);
+  border: 1px solid rgba(147, 197, 253, 0.25);
+  color: var(--accent-secondary);
+}
+
+.expert-btn-call:hover {
+  background: rgba(147, 197, 253, 0.3);
+  border-color: rgba(147, 197, 253, 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(147, 197, 253, 0.2);
+}
+
+[data-theme="light"] .expert-btn-call {
+  background: rgba(30, 58, 138, 0.08); /* accent primary transparent */
+  border-color: rgba(30, 58, 138, 0.2);
+  color: var(--accent-primary);
+}
+
+[data-theme="light"] .expert-btn-call:hover {
+  background: rgba(30, 58, 138, 0.15);
+  border-color: rgba(30, 58, 138, 0.3);
+  box-shadow: 0 4px 20px rgba(30, 58, 138, 0.15);
+}
+
+/* WhatsApp */
+.expert-btn-whatsapp {
+  background: rgba(37, 211, 102, 0.12);
+  border: 1px solid rgba(37, 211, 102, 0.25);
+  color: #25d366;
+}
+
+.expert-btn-whatsapp:hover {
+  background: rgba(37, 211, 102, 0.3);
+  border-color: rgba(37, 211, 102, 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(37, 211, 102, 0.2);
+}
+
+[data-theme="light"] .expert-btn-whatsapp {
+  background: rgba(22, 163, 74, 0.1);
+  border-color: rgba(22, 163, 74, 0.25);
+  color: #16a34a; /* darker green for contrast */
+}
+
+[data-theme="light"] .expert-btn-whatsapp:hover {
+  background: rgba(22, 163, 74, 0.18);
+  border-color: rgba(22, 163, 74, 0.4);
+  box-shadow: 0 4px 20px rgba(22, 163, 74, 0.2);
+}
